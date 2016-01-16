@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace WebApplication1.Account
+namespace TweetSpace.Account
 {
     public partial class ManagePassword : System.Web.UI.Page
     {

@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 
-namespace WebApplication1
+namespace TweetSpace
 {
     public partial class About : Page
     {

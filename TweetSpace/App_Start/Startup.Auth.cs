@@ -7,9 +7,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using WebApplication1.Models;
+using TweetSpace.Models;
 
-namespace WebApplication1
+namespace TweetSpace
 {
     public partial class Startup {
 

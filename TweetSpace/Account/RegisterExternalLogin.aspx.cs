@@ -4,9 +4,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Owin;
-using WebApplication1.Models;
+using TweetSpace.Models;
 
-namespace WebApplication1.Account
+namespace TweetSpace.Account
 {
     public partial class RegisterExternalLogin : System.Web.UI.Page
     {

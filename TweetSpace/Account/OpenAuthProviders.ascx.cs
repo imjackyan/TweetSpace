@@ -6,7 +6,7 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace WebApplication1.Account
+namespace TweetSpace.Account
 {
     public partial class OpenAuthProviders : System.Web.UI.UserControl
     {

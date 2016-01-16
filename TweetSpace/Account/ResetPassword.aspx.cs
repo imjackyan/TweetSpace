@@ -5,9 +5,9 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
-using WebApplication1.Models;
+using TweetSpace.Models;
 
-namespace WebApplication1.Account
+namespace TweetSpace.Account
 {
     public partial class ResetPassword : Page
     {

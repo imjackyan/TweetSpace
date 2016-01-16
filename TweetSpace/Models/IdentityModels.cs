@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebApplication1.Models;
+using TweetSpace.Models;
 
-namespace WebApplication1.Models
+namespace TweetSpace.Models
 {
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -42,7 +42,7 @@ namespace WebApplication1.Models
 }
 
 #region Helpers
-namespace WebApplication1
+namespace TweetSpace
 {
     public static class IdentityHelper
     {

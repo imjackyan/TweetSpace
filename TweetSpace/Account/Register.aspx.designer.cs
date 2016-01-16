@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1.Account {
+namespace TweetSpace.Account {
     
     
     public partial class Register {
