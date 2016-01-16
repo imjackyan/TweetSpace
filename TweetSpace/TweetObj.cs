@@ -9,7 +9,7 @@ using Tweetinvi.Core.Parameters;
 using Tweetinvi.Logic;
 using Tweetinvi.Logic.Model;
 
-namespace ConsoleApplication1
+namespace TweetSpace
 {
     class TweetObj
     {
