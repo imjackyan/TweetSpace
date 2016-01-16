@@ -9,7 +9,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 
-namespace WebApplication1
+namespace TweetSpace
 {
     public class Global : HttpApplication
     {

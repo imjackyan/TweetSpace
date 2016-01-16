@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
-using WebApplication1.Models;
+using TweetSpace.Models;
 
-namespace WebApplication1.Account
+namespace TweetSpace.Account
 {
     public partial class AddPhoneNumber : System.Web.UI.Page
     {

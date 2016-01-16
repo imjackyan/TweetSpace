@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Microsoft.AspNet.FriendlyUrls;
 
-namespace WebApplication1
+namespace TweetSpace
 {
     public static class RouteConfig
     {
