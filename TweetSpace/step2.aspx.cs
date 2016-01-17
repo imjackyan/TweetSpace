@@ -9,12 +9,7 @@ namespace TweetSpace
 {
     public partial class step2 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            Button5.Visible = false;
-            Button4.Visible = false;
-        }
-
+        private static Boolean count = false;
         protected void Button2_Click(object sender, EventArgs e)
         {
             Label1.Text = "Loading...";      
@@ -22,26 +17,39 @@ namespace TweetSpace
             Label1.Text = "Loaded: " + TweetAccess.tweetList.Count;
             Button3.Enabled = false;            
             Button1.Enabled = false;
+            Button2.Enabled = false;
             Button5.Visible = true;
         }
 
         protected void Button3_Click(object sender, EventArgs e)
-        {
+        {            
+            count = true;
             Button2.Enabled = false;
             Button1.Enabled = false;
+            Button3.Enabled = false;
             Button4.Visible = true;
-            TweetAccess.stream(this.Label1);
+            TweetAccess.stream(this.Label1);            
         }
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("step3.aspx");
         }
 
         protected void Button4_Click(object sender, EventArgs e)
         {            
             Button5.Visible = true;
             Button4.Visible = false;
+            TweetAccess.stopStream();
+        }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (count)
+            {
+                //System.Diagnostics.Debug.WriteLine(TweetAccess.tweetList.Count.ToString());
+                Label1.Text = "Loaded: " + TweetAccess.tweetList.Count.ToString();
+            }
         }
 
     }

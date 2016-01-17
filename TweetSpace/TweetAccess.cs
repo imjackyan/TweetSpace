@@ -103,9 +103,9 @@ namespace TweetSpace
                 {
                     tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
                         args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
-                    label1.Text = "Loaded: " + tweetList.Count;
+                    //label1.Text = "Loaded: " + tweetList.Count;
                 };
-                streamNoLoc.StartStream();
+                streamNoLoc.StartStreamAsync();
             }
             else
             {
@@ -115,9 +115,9 @@ namespace TweetSpace
                 {
                     tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
                         args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
-                    label1.Text = "Loaded: " + tweetList.Count;
+                    //label1.Text = "Loaded: " + tweetList.Count;
                 };
-                streamLoc.StartStreamMatchingAllConditions();
+                streamLoc.StartStreamMatchingAllConditionsAsync();
             }
         }
 
