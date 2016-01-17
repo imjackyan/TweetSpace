@@ -10,7 +10,6 @@ namespace TweetSpace
         public static List<List<TweetObj>> tweetSort(List<TweetObj> tweets, DateTime initialTime, TimeSpan timeInterval, int numInts)
         {
             List<List<TweetObj>> final = new List<List<TweetObj>>();
-            DateTime periodBound = initialTime.Add(timeInterval);
             for(int i = 0; i < numInts; i++)
             {
                 final.Add(new List<TweetObj>());
@@ -23,7 +22,13 @@ namespace TweetSpace
                 }
                 else
                 {
-                    final[Convert.ToInt32(Convert.ToDouble((tweets[i].time - initialTime).Ticks) / timeInterval.Ticks)].Add(tweets[i]);
+                    if (Convert.ToInt32(Convert.ToDouble((tweets[i].time - initialTime).Ticks) / timeInterval.Ticks) >= numInts)
+                    {
+                        final[numInts - 1].Add(tweets[i]);
+                    }
+                    else {
+                        final[Convert.ToInt32(Convert.ToDouble((tweets[i].time - initialTime).Ticks) / timeInterval.Ticks)].Add(tweets[i]);
+                    }
                 }
             }
 
