@@ -13,12 +13,12 @@
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Coordinates" class="btn"/>
         </asp:Panel>
         <asp:Panel ID="Panel1" runat="server" Height="182px">
-            <asp:TextBox ID="TextBox1" runat="server" BorderStyle="None" CssClass="btn"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" BorderStyle="None" CssClass="btn" placeholder="Longitude"></asp:TextBox>
             &nbsp;Longitude<br />
-            <asp:TextBox ID="TextBox3" runat="server" BorderStyle="None" CssClass="btn"></asp:TextBox>
+            <asp:TextBox ID="TextBox3" runat="server" BorderStyle="None" CssClass="btn" placeholder="Latitude"></asp:TextBox>
             &nbsp;Latitude<br />
-            <asp:TextBox ID="TextBox2" runat="server" BorderStyle="None" CssClass="btn"></asp:TextBox>
-            &nbsp;Radius<br />
+            <asp:TextBox ID="TextBox2" runat="server" BorderStyle="None" CssClass="btn" placeholder="Radius"></asp:TextBox>
+            &nbsp;Radius (km)<br />
             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Next" class="btn"/>
         </asp:Panel>
 
