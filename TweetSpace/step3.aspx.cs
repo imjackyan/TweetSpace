@@ -47,10 +47,11 @@ namespace TweetSpace
         // SEARCH WORDS
 
         protected void Button2_Click(object sender, EventArgs e)
-        {
+        { 
+             string text = TextBox1.Text;
             DateTime lowest = TweetAccess.tweetList[0].time;
-            DateTime highest = TweetAccess.tweetList[0].time; 
-            for(int i = 0; i < TweetAccess.tweetList.Count; i++)
+            DateTime highest = TweetAccess.tweetList[0].time;
+            for (int i = 0; i < TweetAccess.tweetList.Count; i++)
             {
                 if (TweetAccess.tweetList[i].time < lowest)
                 {
@@ -66,7 +67,24 @@ namespace TweetSpace
 
             if (DropDownList1.Items[1].Selected)
             {
+                List<double> freq = new List<double>();
+                string[] keywords = text.Split(',');
+                freq = TweetAnalysis.countKeywords(TweetAnalysis.tweetSort(TweetAccess.tweetList,lowest,timeInterval,numInts), keywords, true);
+Chart1.Series.Add("Series2");
+            Chart1.Series["Series2"].ChartType = SeriesChartType.Line;
+            
+            Chart1.Series["Series2"].XValueType = ChartValueType.Time;
+            DateTime x = lowest;
+            
+            for (int i = 0; i < numInts; i++)
+            {
+                x = x.Add(timeInterval);
+               Chart1.Series["Series2"].Points.AddXY(x, freq[i]);
+            }
 
+            Chart1.Series["Series2"].ChartArea = "ChartArea1";
+            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
             }
             else
             {                

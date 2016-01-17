@@ -3,7 +3,7 @@
 
     <h2>What would you like to do with these tweets?</h2>
 
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server" height="700">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <br />
             <asp:TextBox ID="TextBox1" runat="server" BorderColor="Gray" BorderStyle="Solid" CssClass="btn"></asp:TextBox>
