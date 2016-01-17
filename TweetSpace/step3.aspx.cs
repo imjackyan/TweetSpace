@@ -26,11 +26,21 @@ namespace WebApplication1
         protected void Button2_Click(object sender, EventArgs e)
         {
             Chart1.Series.Add("Series2");
-            Chart1.Series["Series2"].ChartType = SeriesChartType.Column;
-            for(int i = 0;i<10;i++){
-                Chart1.Series["Series2"].Points.AddXY(i,rnd.Next(50));
+            Chart1.Series["Series2"].ChartType = SeriesChartType.Line;
+            
+            Chart1.Series["Series2"].XValueType = ChartValueType.DateTime;
+            System.DateTime x;
+
+
+            for (int i = 0; i < 20; i++)
+            {
+                x = new System.DateTime(2016, 1, 1+i);
+                Chart1.Series["Series2"].Points.AddXY(x.ToOADate(), rnd.Next(50));
             }
+
             Chart1.Series["Series2"].ChartArea = "ChartArea1";
+            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
         }
              
     }

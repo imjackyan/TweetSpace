@@ -16,7 +16,7 @@
             <asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
             <br />
             <br />
-            <asp:Chart ID="Chart1" runat="server">
+            <asp:Chart ID="Chart1" runat="server" Height="437px" Width="963px">
                 <Series>
                     <asp:Series Name="Series1">
                     </asp:Series>
