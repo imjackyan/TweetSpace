@@ -11,7 +11,8 @@ using Tweetinvi.Core.Credentials;
 using Tweetinvi.Core.Enum;
 using Tweetinvi.Core.Interfaces;
 using Tweetinvi.Core.Parameters;
-
+using Tweetinvi.Core.Interfaces.Streaminvi;
+using System.Web.UI.WebControls;
 
 namespace TweetSpace
 {
@@ -21,9 +22,11 @@ namespace TweetSpace
         public static double lat { get; set; }
         public static double longi { get; set; }
         public static double r { get; set; }
+        public static List<TweetObj> tweetList { get; set; }
+        private static ISampleStream streamNoLoc = Tweetinvi.Stream.CreateSampleStream();
+        private static IFilteredStream streamLoc = Tweetinvi.Stream.CreateFilteredStream();
         public static void stuff()
         {
-            test();
             //test();
             //Console.Read();
             //List<TweetObj> tweetList = new List<TweetObj>();
@@ -65,42 +68,70 @@ namespace TweetSpace
 
         }
 
-        public static void test()
+        public static void searchTweets()
         {
-            Auth.SetUserCredentials("vzdJU1JzERp4U29LNj0ojgeq9", "m4OJXaSfKyeRJIhUAFqDn6zPR3FsipQbckStPwEERNxgPzUs2W",
-                "4807340086-Of26PfbUiE2vokwgVbBu0ckaJuugsywurvYZ0aL", "zecE50XS1XBuViE4euLgoIUwvvWjUYeJa5ByTWJVnSWqi");
-            var searchParameter = new TweetSearchParameters("*");
+            tweetList = new List<TweetObj>();
+            TweetSearchParameters searchParameter;
+            if (location)
+            {
+                searchParameter = new TweetSearchParameters(new GeoCode(longi, lat, r, DistanceMeasure.Kilometers));
+            } else
+            {
+                searchParameter = new TweetSearchParameters("*");
+            }            
             searchParameter.Lang = Language.English;
-            searchParameter.MaximumNumberOfResults = 100000;
+            searchParameter.MaximumNumberOfResults = 100;
             var tweets = Search.SearchTweets(searchParameter);
-            StreamWriter file = new StreamWriter("test.txt");
-            List<Tweetinvi.Logic.Tweet> asdf = new List<Tweetinvi.Logic.Tweet>();
             using (var sequenceEnum = tweets.GetEnumerator())
             {
                 while (sequenceEnum.MoveNext())
                 {
-                    asdf.Add((Tweetinvi.Logic.Tweet)sequenceEnum.Current);
+                    tweetList.Add(new TweetObj(sequenceEnum.Current.Text, sequenceEnum.Current.CreatedBy.Name, sequenceEnum.Current.CreatedBy.ScreenName,
+                        sequenceEnum.Current.CreatedAt, sequenceEnum.Current.Coordinates, sequenceEnum.Current.Place, sequenceEnum.Current.Hashtags));
                 }
             }
-            Console.WriteLine(asdf[234].Coordinates);
-            Console.WriteLine(asdf[234].Hashtags[0]);
-            Console.WriteLine(asdf[234].CreatedBy.Name);
-            Console.WriteLine(asdf[234].CreatedBy.ScreenName);
-            Console.ReadKey();
-            file.Close();
         }
 
-        public static void stream()
+        public static void stream(Label label1)
         {
-            Auth.SetUserCredentials("vzdJU1JzERp4U29LNj0ojgeq9", "m4OJXaSfKyeRJIhUAFqDn6zPR3FsipQbckStPwEERNxgPzUs2W",
-                "4807340086-Of26PfbUiE2vokwgVbBu0ckaJuugsywurvYZ0aL", "zecE50XS1XBuViE4euLgoIUwvvWjUYeJa5ByTWJVnSWqi");
-            var stream = Tweetinvi.Stream.CreateSampleStream();
-            stream.AddTweetLanguageFilter("en");
-            stream.TweetReceived += (sender, args) =>
+            tweetList = new List<TweetObj>();
+            if (!location)
             {
-                Console.WriteLine(args.Tweet);
-            };
-            stream.StartStream();
+
+                streamNoLoc.AddTweetLanguageFilter("en");
+                streamNoLoc.TweetReceived += (sender, args) =>
+                {
+                    tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
+                        args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
+                    label1.Text = "Loaded: " + tweetList.Count;
+                };
+                streamNoLoc.StartStream();
+            }
+            else
+            {
+                streamLoc.AddTweetLanguageFilter("en");
+                streamLoc.AddLocation(new Coordinates(longi - r, lat-r), new Coordinates(longi + r, lat + r));
+                streamLoc.MatchingTweetAndLocationReceived += (sender, args) =>
+                {
+                    tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
+                        args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
+                    label1.Text = "Loaded: " + tweetList.Count;
+                };
+                streamLoc.StartStreamMatchingAllConditions();
+            }
         }
+
+        public static void stopStream()
+        {
+            if (location)
+            {
+                streamLoc.StopStream();
+            }
+            else
+            {
+                streamNoLoc.StopStream();
+            }
+        }
+        
     }
 }

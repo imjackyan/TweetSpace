@@ -21,12 +21,17 @@ namespace TweetSpace
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            TweetAccess.location = false;
             Response.Redirect("step2.aspx");
 
         }
 
         protected void Button3_Click(object sender, EventArgs e)
         {
+            TweetAccess.location = true;
+            TweetAccess.longi = Double.Parse(TextBox1.Text);
+            TweetAccess.lat = Double.Parse(TextBox2.Text);
+            TweetAccess.r = Double.Parse(TextBox3.Text);
             Response.Redirect("step2.aspx");
         }
     }

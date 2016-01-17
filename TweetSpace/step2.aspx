@@ -3,13 +3,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Choose a method to import data</h3>
     <asp:Panel ID="Panel1" runat="server" Height="216px">
-        <asp:Button ID="Button1" runat="server" Text="Import from server" BorderStyle="None" class="btn" />
-        <br /><br />
-        <asp:Button ID="Button2" runat="server" Text="Import from local file" BorderStyle="None" class="btn"/>
-        <br /><br />
-        <asp:Button ID="Button3" runat="server" Text="Start Streaming" BorderStyle="None" class="btn"/>
-        <br /><br />
-        <asp:Button ID="Button4" runat="server" Text="Stop Streaming" BorderStyle="None" class="btn"/>
+        <br />
+        &nbsp;<br />
+        <br />
+        <br />
+        <br />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:Button ID="Button1" runat="server" Text="Import from Database" />
+                <br />
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Search Historical Tweets" />
+                <br />
+                <asp:Button ID="Button3" runat="server" Text="Start Streaming" OnClick="Button3_Click" />
+                <asp:Button ID="Button4" runat="server" Text="End Streaming" OnClick="Button4_Click" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Next" />
+                <br />
+                <asp:Label ID="Label1" runat="server"></asp:Label>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </asp:Panel>
     <asp:Panel ID="Panel2" runat="server" Height="150px">
     </asp:Panel>
