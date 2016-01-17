@@ -13,7 +13,20 @@
             <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="694px"></asp:ListBox>
             <br />
             <br />
-            <asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" />
+            <asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
+            <br />
+            <br />
+            <asp:Chart ID="Chart1" runat="server">
+                <Series>
+                    <asp:Series Name="Series1">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+            <br />
         </ContentTemplate>
 
     </asp:UpdatePanel>
