@@ -17,14 +17,19 @@ namespace TweetSpace
         {
 
         }
-
+        //unused
+        protected bool contains_showall_keywords(string text)
+        {
+            if (text.Equals("%%%")) return true;
+            return false;
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
             Sentana sen = new Sentana();
             ListBox1.Items.Clear();
             string text = TextBox1.Text;
             List<TweetObj> tweets;
-            if (text.Length > 0)
+            if (text.Length > 0 && !contains_showall_keywords(text))
             {
                 string[] keywords = text.Split(',');
                 tweets = TweetAnalysis.filterTweets(TweetAccess.tweetList, keywords);
@@ -35,7 +40,10 @@ namespace TweetSpace
             }
             for (int i = 0; i < tweets.Count; i++)
             {
-                ListBox1.Items.Add(tweets[i].text);
+                double num = sen.scoreTweet(tweets[i]);
+                string tweet = text.Equals("%%%") ? tweets[i].text + ", " +  num.ToString() : tweets[i].text;
+                //if (text.Equals("))
+                ListBox1.Items.Add(tweet);
             }
         }
 
