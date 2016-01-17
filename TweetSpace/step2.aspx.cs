@@ -22,18 +22,18 @@ namespace TweetSpace
         }
 
         protected void Button3_Click(object sender, EventArgs e)
-        {
+        {            
             count = true;
             Button2.Enabled = false;
             Button1.Enabled = false;
             Button3.Enabled = false;
             Button4.Visible = true;
-            TweetAccess.stream(this.Label1);
+            TweetAccess.stream(this.Label1);            
         }
 
         protected void Button5_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("step3.aspx");
         }
 
         protected void Button4_Click(object sender, EventArgs e)
