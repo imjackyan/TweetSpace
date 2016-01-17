@@ -31,8 +31,8 @@ namespace TweetSpace
         {
             TweetAccess.location = true;
             TweetAccess.longi = Double.Parse(TextBox1.Text);
-            TweetAccess.lat = Double.Parse(TextBox2.Text);
-            TweetAccess.r = Double.Parse(TextBox3.Text);
+            TweetAccess.lat = Double.Parse(TextBox3.Text);
+            TweetAccess.r = Double.Parse(TextBox2.Text);
             Response.Redirect("step2.aspx");
         }
     }
