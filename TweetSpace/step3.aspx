@@ -8,6 +8,7 @@
             <br />
             <asp:TextBox ID="TextBox1" runat="server" BorderColor="Gray" BorderStyle="Solid" CssClass="btn"></asp:TextBox>
             <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click" Text="Search" />
+            <asp:CheckBox ID="CheckBox1" runat="server" Text="Show Scores" />
             <br />
             <br />
             <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="1008px"></asp:ListBox>
