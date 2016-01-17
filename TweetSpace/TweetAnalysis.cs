@@ -28,7 +28,7 @@ namespace TweetSpace
             List<Double> counts = new List<Double>();
             for (int i = 0; i < tweets.Count; i++)
             {
-                counts.Add(double.Parse((filterTweets(tweets[i], keywords).Count)));
+                counts.Add(Convert.ToDouble((filterTweets(tweets[i], keywords).Count)));
                 if (percentage)
                 {
                     counts[i] = counts[i] / tweets[i].Count;
@@ -42,7 +42,7 @@ namespace TweetSpace
 
             foreach (TweetObj tweet in tweets)
             {
-                String[] token_tweet = tweet.text.split(' ');
+                String[] token_tweet = tweet.text.Split(' ');
                 for (int j = 0; j < token_tweet.Length; j++)
                 {
                     if (Array.IndexOf(keywords, token_tweet[j]) > -1)
