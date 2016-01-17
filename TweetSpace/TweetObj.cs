@@ -28,7 +28,15 @@ namespace TweetSpace
             this.creatorName = creatorName;
             this.screenName = screenName;
             this.time = time;
-            this.coords = coords;
+
+            if (coords != null)
+            {
+                this.coords = coords;
+            }
+            else
+            {
+                this.coords = new Coordinates(0.0,0.0);
+            }
             if (place != null) { 
                 this.country = place.Country;
             } else{

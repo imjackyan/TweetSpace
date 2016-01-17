@@ -92,7 +92,7 @@ namespace TweetSpace
             }
         }
 
-        public static void stream(Label label1)
+        public static void stream()
         {
             tweetList = new List<TweetObj>();
             if (!location)
@@ -103,7 +103,6 @@ namespace TweetSpace
                 {
                     tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
                         args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
-                    //label1.Text = "Loaded: " + tweetList.Count;
                 };
                 streamNoLoc.StartStreamAsync();
             }
@@ -115,7 +114,6 @@ namespace TweetSpace
                 {
                     tweetList.Add(new TweetObj(args.Tweet.Text, args.Tweet.CreatedBy.Name, args.Tweet.CreatedBy.ScreenName,
                         args.Tweet.CreatedAt, args.Tweet.Coordinates, args.Tweet.Place, args.Tweet.Hashtags));
-                    //label1.Text = "Loaded: " + tweetList.Count;
                 };
                 streamLoc.StartStreamMatchingAllConditionsAsync();
             }

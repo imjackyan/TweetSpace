@@ -10,7 +10,7 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:Button ID="Button1" runat="server" Text="Import from Database" />
+                <asp:Button ID="Button1" runat="server" Text="Import from Database" OnClick="Button1_Click" />
                 <br />
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Search Historical Tweets" />
                 <br />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -28,7 +29,7 @@ namespace TweetSpace
             Button1.Enabled = false;
             Button3.Enabled = false;
             Button4.Visible = true;
-            TweetAccess.stream(this.Label1);            
+            TweetAccess.stream();            
         }
 
         protected void Button5_Click(object sender, EventArgs e)
@@ -52,5 +53,18 @@ namespace TweetSpace
             }
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Startup.path))
+            {                
+                Button1.Enabled = false;
+                Button2.Enabled = false;
+                Button3.Enabled = false;
+                Button4.Enabled = false;
+                Button5.Visible = true;
+                TweetAccess.tweetList = FileIO.read(Startup.path);
+                Label1.Text = "Loaded: " + TweetAccess.tweetList.Count.ToString();
+            }
+        }
     }
 }
