@@ -14,12 +14,16 @@
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Search Historical Tweets" />
                 <br />
                 <asp:Button ID="Button3" runat="server" Text="Start Streaming" OnClick="Button3_Click" />
-                <asp:Button ID="Button4" runat="server" Text="End Streaming" OnClick="Button4_Click" />
+                <asp:Button ID="Button4" runat="server" Text="End Streaming" OnClick="Button4_Click" Visible="False" />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Next" />
+                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Next" Visible="False" />
                 <br />
                 <asp:Label ID="Label1" runat="server"></asp:Label>
+                <asp:Timer ID="Timer1" runat="server" Interval="100" OnTick="Timer1_Tick">
+                </asp:Timer>
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
 </asp:Content>
+
+
