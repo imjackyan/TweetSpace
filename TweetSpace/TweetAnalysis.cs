@@ -17,8 +17,16 @@ namespace TweetSpace
             }
             for (int i = 0; i < tweets.Count; i++)
             {
-                final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+                if ((tweets[i].time) >= (initialTime + new TimeSpan(timeInterval.Ticks * numInts)))
+                {
+                    final[numInts - 1].Add(tweets[i]);
+                }
+                else
+                {
+                    final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+                }
             }
+
             
             return final;
         }
