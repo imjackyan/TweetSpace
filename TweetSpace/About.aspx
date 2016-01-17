@@ -2,7 +2,11 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %></h2>
-    <h3>An app by US.</h3>
+    <h3>This is an application created for DeltaHacks 2016.</h3>
+    <p>We are a group of three McMaster Engineers.</p>
+    <p>Haoran Zhang - Second Year Chemical Engineering</p>
+    <p>Jack Yan - Second Year Computer Engineering</p>
+    <p>George Zhang - Second Year Electrical Engineering</p>
     <p>&nbsp;</p>
     <br />
     </asp:Content>

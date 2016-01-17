@@ -80,7 +80,7 @@ namespace TweetSpace
                 searchParameter = new TweetSearchParameters("*");
             }            
             searchParameter.Lang = Language.English;
-            searchParameter.MaximumNumberOfResults = 100;
+            searchParameter.MaximumNumberOfResults = 250;
             var tweets = Search.SearchTweets(searchParameter);
             using (var sequenceEnum = tweets.GetEnumerator())
             {
@@ -129,6 +129,11 @@ namespace TweetSpace
             {
                 streamNoLoc.StopStream();
             }
+        }
+
+        public static void wipeTweets()
+        {
+            tweetList = new List<TweetObj>();
         }
         
     }

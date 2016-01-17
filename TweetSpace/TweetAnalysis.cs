@@ -23,7 +23,7 @@ namespace TweetSpace
                 }
                 else
                 {
-                    final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+                    final[Convert.ToInt32(Convert.ToDouble((tweets[i].time - initialTime).Ticks) / timeInterval.Ticks)].Add(tweets[i]);
                 }
             }
 

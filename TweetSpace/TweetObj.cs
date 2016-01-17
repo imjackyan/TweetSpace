@@ -25,8 +25,18 @@ namespace TweetSpace
         public TweetObj(string text, string creatorName, string screenName, DateTime time, ICoordinates coords, IPlace place, List<IHashtagEntity> hashtags)
         {
             this.text = text;
-            this.creatorName = creatorName;
-            this.screenName = screenName;
+            if (creatorName == ""){
+                this.creatorName = " ";
+            } else {
+                this.creatorName = creatorName;
+            }
+            if (screenName == "")
+            {
+                this.screenName = " ";
+            }
+            else {
+                this.screenName = screenName;
+            }
             this.time = time;
 
             if (coords != null)

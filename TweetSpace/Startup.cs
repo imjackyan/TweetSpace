@@ -2,6 +2,7 @@
 using Owin;
 using System;
 using System.IO;
+using System.Web.Hosting;
 using Tweetinvi;
 using Tweetinvi.Core.Interfaces.Streaminvi;
 
@@ -10,7 +11,8 @@ namespace TweetSpace
 {
     public partial class Startup {
         private static String tweetSep = "'+J8F";
-        public static string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/tweetSmall.txt";
+        //public static string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/tweetSmall.txt";
+        public static string path = HostingEnvironment.ApplicationPhysicalPath + "/data/tweets.txt";
         public void Configuration(IAppBuilder app) {
             ConfigureAuth(app);
             Auth.SetUserCredentials("vzdJU1JzERp4U29LNj0ojgeq9", "m4OJXaSfKyeRJIhUAFqDn6zPR3FsipQbckStPwEERNxgPzUs2W",

@@ -56,7 +56,8 @@ namespace TweetSpace
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (File.Exists(Startup.path))
-            {                
+            {
+                System.Diagnostics.Debug.WriteLine("Reading from File");
                 Button1.Enabled = false;
                 Button2.Enabled = false;
                 Button3.Enabled = false;

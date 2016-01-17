@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Hosting;
 using TweetSpace;
 
 public class Sentana
@@ -10,8 +11,8 @@ public class Sentana
 
     public Sentana()
 	{
-        string[] negList = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/tweet-.txt");
-        string[] posList = System.IO.File.ReadAllLines(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "/tweet+.txt");
+        string[] negList = System.IO.File.ReadAllLines(HostingEnvironment.ApplicationPhysicalPath + "/sentana_data/tweet-.txt");
+        string[] posList = System.IO.File.ReadAllLines(HostingEnvironment.ApplicationPhysicalPath + "/sentana_data/tweet+.txt");
 
         this.negWords = new string[negList.Length];
         this.negScores = new double[negList.Length];

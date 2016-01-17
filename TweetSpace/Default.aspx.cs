@@ -12,6 +12,7 @@ namespace TweetSpace
         protected void Page_Load(object sender, EventArgs e)
         {
             Panel1.Visible = false;
+            TweetAccess.wipeTweets();
         }
 
         protected void Button2_Click(object sender, EventArgs e)

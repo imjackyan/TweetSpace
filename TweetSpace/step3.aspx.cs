@@ -40,12 +40,8 @@ namespace TweetSpace
         }
 
         // TODO
-        // blank search
-        // file paths
-        //best, worst
         // LARGE DATA SET
         // BUTTON ON FIRST PAGE
-        // AZURE
         // SEARCH WORDS
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -133,9 +129,14 @@ namespace TweetSpace
                 Chart1.Series["Positivity"].ChartArea = "ChartArea1";
                 Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
                 Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
-                //System.Diagnostics.Debug.WriteLine(lowestT);
-                //System.Diagnostics.Debug.WriteLine(highestT);
+                Label1.Text = "Most negative tweet: " + lowestT;
+                Label2.Text = "Most positive tweet: " + highestT;
             }
+        }
+
+        protected void Chart1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

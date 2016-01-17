@@ -22,7 +22,7 @@
             &nbsp;<asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
             <br />
             <br />
-            <asp:Chart ID="Chart1" runat="server" Height="437px" Width="963px">
+            <asp:Chart ID="Chart1" runat="server" Height="437px" Width="963px" OnLoad="Chart1_Load">
                 <Series>
                     <asp:Series Name="Series1">
                     </asp:Series>
@@ -32,6 +32,11 @@
                     </asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
+            <br />
+            <br />
+            <asp:Label ID="Label1" runat="server"></asp:Label>
+            <br />
+            <asp:Label ID="Label2" runat="server"></asp:Label>
             <br />
         </ContentTemplate>
 

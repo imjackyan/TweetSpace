@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h1>Tweet Space</h1>
-        <p class="lead">Tweet space is a site where nothing works. Yet.</p>
+        <p class="lead">TweetSpace is a site that aggregates Tweets and allows the user to analyze them by looking at collective statistics.</p>
         <br />
         <p>What is your location?</p>
         <asp:Panel ID="Panel2" runat="server" Height="136px">
@@ -23,7 +23,4 @@
         </asp:Panel>
 
     </div>
-
-
-
 </asp:Content>
