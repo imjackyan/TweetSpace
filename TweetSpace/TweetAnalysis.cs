@@ -32,5 +32,26 @@ namespace TweetSpace
 
             return final;
         }
+		public static List<TweetObj> filterTweets(List<TweetObj> tweets, String[] keywords)
+        {
+            List<TweetObj> containsKeywords = new List<TweetObj>();
+
+            foreach (TweetObj tweet in tweets)
+            {
+                String[] token_tweet = tweet.text.split(' ');
+                for (int j = 0; j < token_tweet.Length; j++)
+                {
+                    if (Array.IndexOf(keywords, token_tweet[j]) > -1)
+                    {
+                        //Add tweets[i] to new List of TweetObj
+                        containsKeywords.Add(tweet);
+                        break;
+                    }
+                }
+            }
+
+            return containsKeywords;
+
+        }
     }
 }
