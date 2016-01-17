@@ -16,12 +16,5 @@ namespace TweetSpace
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            using (StreamReader _testData = new StreamReader(Server.MapPath("~/data.txt"), true))
-            {
-                ListBox1.Items.Add(_testData.ReadToEnd());
-            }    
-        }
     }
 }
