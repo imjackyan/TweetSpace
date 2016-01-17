@@ -13,7 +13,13 @@
             <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="694px"></asp:ListBox>
             <br />
             <br />
-            <asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
+            <br />
+            <br />
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn">
+                <asp:ListItem>Positivity Values</asp:ListItem>
+                <asp:ListItem>Keyword Frequency</asp:ListItem>
+            </asp:DropDownList>
+            &nbsp;<asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
             <br />
             <br />
             <asp:Chart ID="Chart1" runat="server" Height="437px" Width="963px">
