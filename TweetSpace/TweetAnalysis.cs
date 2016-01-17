@@ -61,7 +61,7 @@ namespace TweetSpace
             {
                 foreach (String word in keywords)
                 {
-                    if (tweet.text.Contains(word))
+                    if (tweet.text.ToLower().Contains(word))
                     {
                         containsKeywords.Add(tweet);
                         break;

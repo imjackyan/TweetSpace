@@ -48,6 +48,7 @@ namespace TweetSpace
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            Chart1.Series.Clear();
             string text = TextBox1.Text;
             DateTime lowest = TweetAccess.tweetList[0].time;
             DateTime highest = TweetAccess.tweetList[0].time;
@@ -63,6 +64,7 @@ namespace TweetSpace
                 }
             }
             int numInts = 15;
+            if(TextBox2.Text != "") numInts = Convert.ToInt32(TextBox2.Text);
             TimeSpan timeInterval = new TimeSpan(((highest - lowest).Ticks) / numInts);
 
             if (DropDownList1.Items[1].Selected)

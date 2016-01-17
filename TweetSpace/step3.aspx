@@ -21,6 +21,7 @@
                 <asp:ListItem>Keyword Frequency</asp:ListItem>
             </asp:DropDownList>
             &nbsp;<asp:Button ID="Button2" runat="server" CssClass="btn" Text="Plot" OnClick="Button2_Click" />
+            &nbsp;<asp:TextBox ID="TextBox2" runat="server" BorderColor="Gray" BorderStyle="Solid" CssClass="btn" placeholder="Number of Data points"></asp:TextBox>
             <br />
             <br />
             <asp:Chart ID="Chart1" runat="server" Height="437px" Width="963px" OnLoad="Chart1_Load">
