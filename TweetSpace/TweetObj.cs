@@ -13,13 +13,13 @@ namespace TweetSpace
 {
     class TweetObj
     {
-        public string text { get; }
-        public string creatorName { get; }
-        public string screenName { get; }
-        public DateTime time { get; }
-        public ICoordinates coords { get; }
-        public String country { get; }
-        public List<String> hashtags { get; }//might be empty
+        public string text { get; set; }
+        public string creatorName { get; set; }
+        public string screenName { get; set; }
+        public DateTime time { get; set; }
+        public ICoordinates coords { get; set; }
+        public String country { get; set; }
+        public List<String> hashtags { get; set; }//might be empty
         private String infoSep = "-dG3=";
 
         public TweetObj(string text, string creatorName, string screenName, DateTime time, ICoordinates coords, IPlace place, List<IHashtagEntity> hashtags)
