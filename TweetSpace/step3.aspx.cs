@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Drawing;
 using System.Web.UI.DataVisualization.Charting;
 
-namespace WebApplication1
+namespace TweetSpace
 {
     public partial class step3 : System.Web.UI.Page
     {
@@ -20,7 +20,21 @@ namespace WebApplication1
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            ListBox1.Items.Add(rnd.Next().ToString());
+            ListBox1.Items.Clear();            
+            string text = TextBox1.Text;
+            List<TweetObj> tweets;
+            if (text.Length > 0)
+            {
+                string[] keywords = text.Split(',');
+                tweets = TweetAnalysis.filterTweets(TweetAccess.tweetList, keywords);
+            } else
+            {
+                tweets = TweetAccess.tweetList;
+            }
+            for (int i = 0; i < tweets.Count; i++)
+            {
+                ListBox1.Items.Add(tweets[i].text);
+            }            
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -30,8 +44,7 @@ namespace WebApplication1
             
             Chart1.Series["Series2"].XValueType = ChartValueType.DateTime;
             System.DateTime x;
-
-
+            
             for (int i = 0; i < 20; i++)
             {
                 x = new System.DateTime(2016, 1, 1+i);

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="step3.aspx.cs" Inherits="WebApplication1.step3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="step3.aspx.cs" Inherits="TweetSpace.step3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>What would you like to do with these tweets?</h2>
@@ -10,7 +10,7 @@
             <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click" Text="Search" />
             <br />
             <br />
-            <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="694px"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="880px"></asp:ListBox>
             <br />
             <br />
             <br />

@@ -8,11 +8,10 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:Button ID="Button1" runat="server" Text="Import from Database" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Import from Database" OnClick="Button1_Click" CssClass="btn"  />
                 <br />
                 <br />
                 <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Search Historical Tweets" CssClass="btn" />
->>>>>>> b2459d8841c1d32784a848f216b8c2919ecbca21
                 <br />
                 <br />
                 <asp:Button ID="Button3" runat="server" Text="Start Streaming" OnClick="Button3_Click" CssClass="btn" />

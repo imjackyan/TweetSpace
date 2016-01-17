@@ -484,6 +484,7 @@
       <DependentUpon>step3.aspx</DependentUpon>
     </Compile>
     <Compile Include="TweetAccess.cs" />
+    <Compile Include="TweetAnalysis.cs" />
     <Compile Include="TweetObj.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
