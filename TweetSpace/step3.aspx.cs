@@ -15,31 +15,33 @@ namespace TweetSpace
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Sentana sen = new Sentana();
-            ListBox1.Items.Clear();            
+            ListBox1.Items.Clear();
             string text = TextBox1.Text;
             List<TweetObj> tweets;
             if (text.Length > 0)
             {
                 string[] keywords = text.Split(',');
                 tweets = TweetAnalysis.filterTweets(TweetAccess.tweetList, keywords);
-            } else
+            }
+            else
             {
                 tweets = TweetAccess.tweetList;
             }
             for (int i = 0; i < tweets.Count; i++)
             {
                 ListBox1.Items.Add(tweets[i].text);
-            }            
+            }
         }
 
         // TODO
-        // MERGE
+        // blank search
+        // file paths
         //best, worst
         // LARGE DATA SET
         // BUTTON ON FIRST PAGE
@@ -47,8 +49,8 @@ namespace TweetSpace
         // SEARCH WORDS
 
         protected void Button2_Click(object sender, EventArgs e)
-        { 
-             string text = TextBox1.Text;
+        {
+            string text = TextBox1.Text;
             DateTime lowest = TweetAccess.tweetList[0].time;
             DateTime highest = TweetAccess.tweetList[0].time;
             for (int i = 0; i < TweetAccess.tweetList.Count; i++)
@@ -69,36 +71,35 @@ namespace TweetSpace
             {
                 List<double> freq = new List<double>();
                 string[] keywords = text.Split(',');
-                freq = TweetAnalysis.countKeywords(TweetAnalysis.tweetSort(TweetAccess.tweetList,lowest,timeInterval,numInts), keywords, true);
-Chart1.Series.Add("Series2");
-            Chart1.Series["Series2"].ChartType = SeriesChartType.Line;
-            
-            Chart1.Series["Series2"].XValueType = ChartValueType.Time;
-            DateTime x = lowest;
-            
-            for (int i = 0; i < numInts; i++)
-            {
-                x = x.Add(timeInterval);
-               Chart1.Series["Series2"].Points.AddXY(x, freq[i]);
-            }
+                freq = TweetAnalysis.countKeywords(TweetAnalysis.tweetSort(TweetAccess.tweetList, lowest, timeInterval, numInts), keywords, true);
+                Chart1.Series.Add("Series2");
+                Chart1.Series["Series2"].ChartType = SeriesChartType.Line;
+                Chart1.Series["Series2"].XValueType = ChartValueType.Time;
+                DateTime x = lowest;
+                Chart1.Series["Series2"].Color = Color.Blue;
+                for (int i = 0; i < numInts; i++)
+                {
+                    x = x.Add(timeInterval);
+                    Chart1.Series["Series2"].Points.AddXY(x, freq[i]);
+                }
 
-            Chart1.Series["Series2"].ChartArea = "ChartArea1";
-            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                Chart1.Series["Series2"].ChartArea = "ChartArea1";
+                Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
             }
             else
-            {                
+            {
                 Sentana sen = new Sentana();
                 List<List<TweetObj>> sorted = TweetAnalysis.tweetSort(TweetAccess.tweetList, lowest, timeInterval, numInts);
-                double[] scores= new double[sorted.Count];
+                double[] scores = new double[sorted.Count];
                 double lowestS = sen.scoreTweet(sorted[0][0]);
                 string lowestT = sorted[0][0].text;
                 double highestS = sen.scoreTweet(sorted[0][0]);
                 string highestT = sorted[0][0].text;
                 for (int i = 0; i < scores.Length; i++)
                 {
-                    double accum=0;
-                    for(int j=0; j < sorted[i].Count; j++)
+                    double accum = 0;
+                    for (int j = 0; j < sorted[i].Count; j++)
                     {
                         double score = sen.scoreTweet(sorted[i][j]);
                         accum += score;
@@ -127,7 +128,7 @@ Chart1.Series.Add("Series2");
                 Chart1.Series["Positivity"].Color = Color.Blue;
                 for (int i = 0; i < numInts; i++)
                 {
-                    Chart1.Series["Positivity"].Points.AddXY(lowest + new TimeSpan(i*timeInterval.Ticks), scores[i]);
+                    Chart1.Series["Positivity"].Points.AddXY(lowest + new TimeSpan(i * timeInterval.Ticks), scores[i]);
                 }
                 Chart1.Series["Positivity"].ChartArea = "ChartArea1";
                 Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
@@ -135,7 +136,7 @@ Chart1.Series.Add("Series2");
                 //System.Diagnostics.Debug.WriteLine(lowestT);
                 //System.Diagnostics.Debug.WriteLine(highestT);
             }
-        }             
+        }
     }
 }
-    
+
