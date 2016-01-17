@@ -21,7 +21,6 @@ namespace TweetSpace
         public String country { get; }
         public List<String> hashtags { get; }//might be empty
         private String infoSep = "-dG3=";
-        
 
         public TweetObj(string text, string creatorName, string screenName, DateTime time, ICoordinates coords, IPlace place, List<IHashtagEntity> hashtags)
         {
@@ -30,7 +29,11 @@ namespace TweetSpace
             this.screenName = screenName;
             this.time = time;
             this.coords = coords;
-            this.country = place.Country;
+            if (place != null) { 
+                this.country = place.Country;
+            } else{
+                country = " ";
+            }
             this.hashtags = new List<String>();
             for (int i= 0; i < hashtags.Count; i++)
             {
