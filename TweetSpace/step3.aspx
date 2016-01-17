@@ -10,7 +10,7 @@
             <asp:Button ID="Button1" runat="server" CssClass="btn" OnClick="Button1_Click" Text="Search" />
             <br />
             <br />
-            <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="880px"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" Height="270px" Width="1008px"></asp:ListBox>
             <br />
             <br />
             <br />

@@ -17,7 +17,11 @@ namespace TweetSpace
             }
             for (int i = 0; i < tweets.Count; i++)
             {
-                final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+                if ((tweets[i].time) >= (initialTime + new TimeSpan(timeInterval.Ticks*numInts))){
+                    final[numInts - 1].Add(tweets[i]);
+                } else{
+                    final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+                }
             }
             
             return final;
@@ -39,13 +43,17 @@ namespace TweetSpace
 		public static List<TweetObj> filterTweets(List<TweetObj> tweets, String[] keywords)
         {
             List<TweetObj> containsKeywords = new List<TweetObj>();
+            for (int i = 0; i < keywords.Length; i++)
+            {
+                keywords[i] = keywords[i].ToLower();
+            }
 
             foreach (TweetObj tweet in tweets)
             {
                 String[] token_tweet = tweet.text.Split(' ');
                 for (int j = 0; j < token_tweet.Length; j++)
                 {
-                    if (Array.IndexOf(keywords, token_tweet[j]) > -1)
+                    if (Array.IndexOf(keywords, token_tweet[j].ToLower()) > -1)
                     {
                         //Add tweets[i] to new List of TweetObj
                         containsKeywords.Add(tweet);

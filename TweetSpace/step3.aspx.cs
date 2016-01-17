@@ -20,6 +20,7 @@ namespace TweetSpace
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            Sentana sen = new Sentana();
             ListBox1.Items.Clear();            
             string text = TextBox1.Text;
             List<TweetObj> tweets;
@@ -37,25 +38,86 @@ namespace TweetSpace
             }            
         }
 
+        // TODO
+        // MERGE
+        //best, worst
+        // LARGE DATA SET
+        // BUTTON ON FIRST PAGE
+        // AZURE
+        // SEARCH WORDS
+
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Chart1.Series.Add("Series2");
-            Chart1.Series["Series2"].ChartType = SeriesChartType.Line;
-            
-            Chart1.Series["Series2"].XValueType = ChartValueType.DateTime;
-            System.DateTime x;
-            
-            for (int i = 0; i < 20; i++)
+            DateTime lowest = TweetAccess.tweetList[0].time;
+            DateTime highest = TweetAccess.tweetList[0].time; 
+            for(int i = 0; i < TweetAccess.tweetList.Count; i++)
             {
-                x = new System.DateTime(2016, 1, 1+i);
-                Chart1.Series["Series2"].Points.AddXY(x.ToOADate(), rnd.Next(50));
+                if (TweetAccess.tweetList[i].time < lowest)
+                {
+                    lowest = TweetAccess.tweetList[i].time;
+                }
+                if (TweetAccess.tweetList[i].time > highest)
+                {
+                    highest = TweetAccess.tweetList[i].time;
+                }
             }
+            int numInts = 15;
+            TimeSpan timeInterval = new TimeSpan(((highest - lowest).Ticks) / numInts);
 
-            Chart1.Series["Series2"].ChartArea = "ChartArea1";
-            Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
-            Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
-        }
-             
+            if (DropDownList1.Items[1].Selected)
+            {
+
+            }
+            else
+            {                
+                Sentana sen = new Sentana();
+                List<List<TweetObj>> sorted = TweetAnalysis.tweetSort(TweetAccess.tweetList, lowest, timeInterval, numInts);
+                double[] scores= new double[sorted.Count];
+                double lowestS = sen.scoreTweet(sorted[0][0]);
+                string lowestT = sorted[0][0].text;
+                double highestS = sen.scoreTweet(sorted[0][0]);
+                string highestT = sorted[0][0].text;
+                for (int i = 0; i < scores.Length; i++)
+                {
+                    double accum=0;
+                    for(int j=0; j < sorted[i].Count; j++)
+                    {
+                        double score = sen.scoreTweet(sorted[i][j]);
+                        accum += score;
+                        if (score < lowestS)
+                        {
+                            lowestS = score;
+                            lowestT = sorted[i][j].text;
+                        }
+                        if (score > highestS)
+                        {
+                            highestS = score;
+                            highestT = sorted[i][j].text;
+                        }
+                    }
+                    if (accum == 0)
+                    {
+                        scores[i] = 0;
+                    }
+                    else {
+                        scores[i] = accum / (sorted[i].Count);
+                    }
+                }
+                Chart1.Series.Add("Positivity");
+                Chart1.Series["Positivity"].ChartType = SeriesChartType.Line;
+                Chart1.Series["Positivity"].XValueType = ChartValueType.Time;
+                Chart1.Series["Positivity"].Color = Color.Blue;
+                for (int i = 0; i < numInts; i++)
+                {
+                    Chart1.Series["Positivity"].Points.AddXY(lowest + new TimeSpan(i*timeInterval.Ticks), scores[i]);
+                }
+                Chart1.Series["Positivity"].ChartArea = "ChartArea1";
+                Chart1.ChartAreas["ChartArea1"].AxisX.MajorGrid.LineWidth = 0;
+                Chart1.ChartAreas["ChartArea1"].AxisY.MajorGrid.LineWidth = 0;
+                //System.Diagnostics.Debug.WriteLine(lowestT);
+                //System.Diagnostics.Debug.WriteLine(highestT);
+            }
+        }             
     }
 }
     
