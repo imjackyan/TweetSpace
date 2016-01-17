@@ -44,6 +44,7 @@ namespace TweetSpace
                 string tweet = text.Equals("%%%") ? tweets[i].text + ", " +  num.ToString() : tweets[i].text;
                 //if (text.Equals("))
                 ListBox1.Items.Add(tweet);
+                //ListBox1.Items.Add(tweets[i].text);
             }
         }
 
