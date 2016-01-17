@@ -7,30 +7,34 @@ namespace TweetSpace
 {
     public class TweetAnalysis
     {
-        public List<List<TweetObj>> Tweetsort(List<TweetObj> tweets, DateTime initialTime, TimeSpan timeInterval)
+        public static List<List<TweetObj>> tweetSort(List<TweetObj> tweets, DateTime initialTime, TimeSpan timeInterval, int numInts)
         {
             List<List<TweetObj>> final = new List<List<TweetObj>>();
             DateTime periodBound = initialTime.Add(timeInterval);
-            bool run = true;
-
-            while (run)
+            for(int i = 0; i < numInts; i++)
             {
-                List<TweetObj> period = new List<TweetObj>();
-                run = false;
-                for (int i = 0; i < tweets.Count; i++)
-                {
-                    if (tweets[i].time.CompareTo(initialTime) >= 0 && tweets[i].time.CompareTo(periodBound) < 0)
-                    {
-                        period.Add(tweets[i]);
-                        run = true;
-                    }
-                }
-                final.Add(period);
-                initialTime = initialTime.Add(timeInterval);
-                periodBound = initialTime.Add(timeInterval);
+                final.Add(new List<TweetObj>());
             }
-
+            for (int i = 0; i < tweets.Count; i++)
+            {
+                final[Convert.ToInt32((tweets[i].time - initialTime).TotalSeconds / timeInterval.TotalSeconds)].Add(tweets[i]);
+            }
+            
             return final;
+        }
+
+        public static List<Double> countKeywords(List<List<TweetObj>> tweets, String[] keywords, bool percentage)
+        {
+            List<Double> counts = new List<Double>();
+            for (int i = 0; i < tweets.Count; i++)
+            {
+                counts.Add(double.Parse((filterTweets(tweets[i], keywords).Count)));
+                if (percentage)
+                {
+                    counts[i] = counts[i] / tweets[i].Count;
+                }
+            }
+            return counts;
         }
     }
 }

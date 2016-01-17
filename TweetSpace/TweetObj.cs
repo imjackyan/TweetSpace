@@ -11,7 +11,7 @@ using Tweetinvi.Logic.Model;
 
 namespace TweetSpace
 {
-    class TweetObj
+    public class TweetObj
     {
         public string text { get; set; }
         public string creatorName { get; set; }
