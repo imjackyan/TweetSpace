@@ -41,15 +41,30 @@ public class Sentana
 
         foreach (string token in token_tweet)
         {
-            int f = find(this.negWords, token);
-            if (f > -1)
+            double scalar = 1.0;
+            string copy = token;
+            if (copy.Length > 0)
             {
-                score -= this.negScores[f];
+                if (copy[0] == '#')
+                {
+                    scalar = 2.0;
+                    copy = token.Substring(1);
+                }
+                else if (copy[0] == '@')
+                {
+                    scalar = 0.0;
+                }
             }
-            f = find(this.posWords, token);
+
+            int f = find(this.negWords, copy);
             if (f > -1)
             {
-                score += this.posScores[f];
+                score -= scalar*this.negScores[f];
+            }
+            f = find(this.posWords, copy);
+            if (f > -1)
+            {
+                score += scalar*this.posScores[f];
             }
         }
         return score;
