@@ -14,5 +14,7 @@ NLTK
 
 ## Creators
 Haoran Zhang
+
 George Zhang
+
 Jack Yan
